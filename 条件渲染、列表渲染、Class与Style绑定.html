@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染、列表渲染、Class与Style绑定</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        {{msg}}
+    </div>
+    <div>
+        <p v-for="item in list" v-if="item.age > 24"
+           :class="[ 'ace', 'big', {lar:false, mi:true, aa:true} ]"
+        >
+            {{item.age}}</p>
+        <p v-else :style="styleMsg">{{item.name}}</p>
+    </div>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'Hello 条件渲染、列表渲染、Class与Style绑定',
+            count: 0,
+            list: [
+                {name: 'meng han', age: 24},
+                {name: 'xue qiang', age: 25}
+            ],
+            styleMsg: {
+                color: 'red',
+                fontWeight: 'bold'
+            }
+        }
+    })
+</script>
+</body>
+</html>

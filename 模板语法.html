@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>{{msg}}</div>
+    <div>
+        <a v-bind:href="url1">百度</a>
+        <a :href="url2">惠科</a>
+    </div>
+    <div>
+        count: {{count}}
+        <button @click="add">增加</button>
+    </div>
+    <div>
+        TodoList：
+        <input type="text" v-model="content">
+        <button @click="addItem">提交</button>
+        <br>
+        <ul>
+            <li v-for="(item,index) in list" :key="index">
+                {{item}}{{index}}
+                <button @click="remove(index)">移除</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: 'hello Vue2.0x',
+            url1: 'http://www.baidu.com',
+            url2: 'http://hkcqjy.com.cn',
+            count: 0,
+            content: '',
+            list: []
+        },
+        methods: {
+            add() {
+                this.count++
+            },
+            addItem() {
+                this.list.push(this.content)
+                this.content = ''
+            },
+            remove(index) {
+                this.list.splice(index, 1)
+            }
+        }
+    })
+</script>
+</body>
+</html>

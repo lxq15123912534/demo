@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性与侦听器</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>
+        {{content}}
+    </p>
+    <p>
+        {{msg1}}
+    </p>
+</div>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            content: 'Hello Watch',
+            msg: 'My name is Lebron'
+        },
+        watch: {
+            content: function (newO, oldO) {
+                console.log("newO is :" + newO);
+                console.log("oldO is :" + oldO)
+            }
+        },
+        computed: {
+            msg1: function () {
+                return this.content + ", " + this.msg
+            }
+        }
+    })
+</script>
+</body>
+</html>
